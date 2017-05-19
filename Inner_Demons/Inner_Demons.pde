@@ -23,12 +23,12 @@
  boolean menuScreen = true;
 
 void setup() {
-  size(1000, 700); 
+  size(1000, 700); //Sets the size of the screen
   smooth();
 }
 
 void draw() {
-  checks();
+  checks(); //Sets the 
 }
 
 //The checks in the checks function just run through, to see what screen the user is supposed to be on.
