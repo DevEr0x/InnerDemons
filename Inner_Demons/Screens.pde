@@ -70,6 +70,9 @@ void characterScreen() {
   //Continue Button
   rect(690, 615, 270, 75);
 
+  //Back Button
+  rect(40, 615, 200, 75);
+
   //Gender Button Text
   fill(255);
   textSize(30);
@@ -87,6 +90,10 @@ void characterScreen() {
   //Continue Button Text
   textSize(50);
   text("Continue", 710, 670);
+
+  //Back Button Text
+  textSize(50);
+  text("Back", 80, 670);
 
   if (mousePressed) {
     if (mouseX >=660 && mouseX<= 760) { //Selecting BOY
@@ -127,6 +134,12 @@ void characterScreen() {
     if (mouseX>=800 && mouseX<=875) { //Selecting Preset 6
       if (mouseY>=535 && mouseY<=585) {
         preset = 6;
+      }
+    }
+    if (mouseX>=40 && mouseX<=240) { //Back Button
+      if (mouseY>=615 && mouseY<=690) {
+        menuScreen = true;
+        characterScreen = false;
       }
     }
   }
