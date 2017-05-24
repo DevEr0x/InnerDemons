@@ -1,6 +1,6 @@
 # InnerDemons
 
- Developers:
+ <h1>Developers:</h1>
 Eric Mazza, Shayne Lisk, Ben Kenard
  
  Start Date:
