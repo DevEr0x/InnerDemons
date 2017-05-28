@@ -31,6 +31,12 @@ void menuScreen() { //The screen for the main menu, this is where the game start
         menuScreen = false;
       }
     }
+    if (mouseX >= (width/2)-150 && mouseX<=(width/2)+150) { //Goes to settings screen
+      if (mouseY>=400-50 && mouseY<=400+50) {
+        optionsScreen = true;
+        menuScreen = false;
+      }
+    }
     if (mouseX >= (width/2)-150 && mouseX<=(width/2)+150) {  //Goes to quit confirmation screen
       if (mouseY >= 600-50 && mouseY<=600+50) {
         quitScreen = true;
@@ -285,8 +291,93 @@ void difficultyScreen() {  //Difficulty selection screen, player chooses how har
   }
 }
 
-void gameScreen() {
+void gameScreen() { //The start of the game screen - This is where all the action will take place.
   if (level == 0) {
     background(startBackground); //This will be replaced with dialouge, but for now it's just this.
   }
+}
+
+void optionsScreen() { //This is where the player can choose between: Settings - Help - Credits
+  background(255);
+
+  //Setting up title
+  fill(0);
+  textSize(100);
+  text("Options", 300, 100);
+
+  //Setting up buttons
+  fill(255);
+  strokeWeight(1);
+  rectMode(0);
+  stroke(0);
+  rect(750, 200, 200, 100); //Creating HELP button
+  rect(750, 350, 200, 100); //Creating SETTINGS Button
+  rect(750, 500, 200, 100); //Creating CREDITS Button
+  rect(20, 550, 200, 100); //Creating BACK Button
+
+  //Setting up button text
+  fill(0);
+  textSize(50);
+  text("Help", 790, 265); //Creating HELP button text
+  text("Settings", 755, 415); //Creating SETTINGS button text
+  text("Credits", 770, 565); //Creating CREDITS button text
+  text("Back", 60, 615); //Creating BACK button text
+
+  if (mousePressed) {
+    if (mouseX>=750 && mouseX<=950) { //Selects HELP button
+      if (mouseY>=200 && mouseY<=300) {
+      }
+    }
+    if (mouseX>=750 && mouseX<=950) { //Selects SETTINGS button
+      if (mouseY>=350 && mouseY<=450) {
+      }
+    }
+    if (mouseX>=750 && mouseX<=950) { //Selects CREDITS button
+      if (mouseY>=500 && mouseY<=700) {
+        creditsScreen = true;
+        y = 700;
+        optionsScreen = false;
+      }
+    }
+    if (mouseX>=20 && mouseX<=220) { //Selects BACK button
+      if (mouseY>=550 && mouseY<=650) {
+        menuScreen = true;
+        optionsScreen = false;
+      }
+    }
+  }
+}
+
+void creditsScreen() {  //Credits screen
+/*
+The best way to describe this screen:
+This text is all attatched to the y variable, which is constantly moving upwards. 
+This makes all the text scroll upwards like normal credits you'd see in a movie.
+*/
+  int x = width/2-200;
+  y--;
+  if (y<= -1000) {
+    optionsScreen = true;
+    creditsScreen = false;
+  }
+  background(0);
+
+  //Setting Title
+  textSize(100);
+  fill(255);
+  text("Credits", x, y);
+  text("Developers", x-100, y+100);
+  textSize(50);
+  text("Ben Kenard", x, y+200);
+  text("Eric Mazza", x, y+300);
+  text("Shayne Lisk", x, y+400);
+  textSize(100);
+  text("Special Thanks", x-200, y+500);
+  textSize(50);
+  text("PiskelApp - Used for weapons", x-200, y+600); //Where we made the weapons and chest and background animations
+  text("Github - Collaboration", x-200, y+700); //Where we share all our code
+  text("Gaurav Munjal - SpriteSheets", x-200, y+800); //Universal Sprite Sheet Maker (This is the creator of the site we used for character sprites)
+  text("Project Crystal - Site Hosting", x-200, y+900); //Website hosting
+  textSize(75);
+  text("Thanks for playing!", x-200, y+1000);
 }

@@ -20,6 +20,9 @@
 
 //Images - Backgrounds
 PImage startBackground; 
+//Images - Characters
+
+//Images - Enemies
 
 //Character Global Variables
 int preset = 1;
@@ -32,12 +35,17 @@ boolean characterScreen = false;
 boolean quitScreen = false;
 boolean difficultyScreen = false;
 boolean gameScreen = false;
+boolean optionsScreen = false;
+boolean creditsScreen = false;
 
 //Difficulty Variables
 int difficulty = 2;
 
 //Game Progression Variables
 int level = 0;
+
+//Credits
+int y = 700;
 
 void setup() {
   size(1000, 700); //Sets the size of the screen
@@ -50,6 +58,7 @@ void setup() {
 
 void draw() {
   checks(); //Runs all the screen checks constantly
+  characterChecks(); //Constantly checks what character should be displayed.
 }
 
 //The checks in the checks function just run through, to see what screen the user is supposed to be on.
@@ -68,6 +77,12 @@ void checks() {
   }
   if (gameScreen) {
     gameScreen();
+  }
+  if (optionsScreen) {
+    optionsScreen();
+  }
+  if (creditsScreen) {
+    creditsScreen();
   }
 }
 
