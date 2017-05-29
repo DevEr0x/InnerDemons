@@ -18,6 +18,12 @@
  
  \********************/
 
+//Images - Backgrounds
+PImage startBackground; 
+//Images - Characters
+
+//Images - Enemies
+
 //Character Global Variables
 int preset = 1;
 String gender = "Male";
@@ -26,14 +32,33 @@ String gender = "Male";
 boolean menuScreen = true; //Starts off true (Because it's the starting screen)
 //The rest of the screens will be false, because they are only active when the player gets to them, menuScreen will be deactivated when switching from one screen to the next.
 boolean characterScreen = false;
+boolean quitScreen = false;
+boolean difficultyScreen = false;
+boolean gameScreen = false;
+boolean optionsScreen = false;
+boolean creditsScreen = false;
+
+//Difficulty Variables
+int difficulty = 2;
+
+//Game Progression Variables
+int level = 0;
+
+//Credits
+int y = 700;
 
 void setup() {
   size(1000, 700); //Sets the size of the screen
   smooth();
+
+  //Image Defining
+  startBackground = loadImage("Starting Background.png");
+  startBackground.resize(1000, 700);
 }
 
 void draw() {
-  checks(); //Sets the
+  checks(); //Runs all the screen checks constantly
+  characterChecks(); //Constantly checks what character should be displayed.
 }
 
 //The checks in the checks function just run through, to see what screen the user is supposed to be on.
@@ -43,5 +68,38 @@ void checks() {
   }
   if (characterScreen) {
     characterScreen();
+  }
+  if (quitScreen) {
+    quitScreen();
+  }
+  if (difficultyScreen) {
+    difficultyScreen();
+  }
+  if (gameScreen) {
+    gameScreen();
+  }
+  if (optionsScreen) {
+    optionsScreen();
+  }
+  if (creditsScreen) {
+    creditsScreen();
+  }
+}
+
+/*
+Work in progress...
+ Short description of the code below:
+ This is supposed to make the button creation process go by a lot quicker and use less code... 
+ currently, it doesn't work, but I have hopes for it to become very usefull. 
+ Any suggestions for it would be very helpful.
+ */
+void buttonClick(int x1, int x2, int y1, int y2, boolean activate, boolean disable) {
+  if (mousePressed) {
+    if (mouseX>=x1 && mouseX<=x2) {
+      if (mouseY>=y1 && mouseY<=y2) { //Selects YES
+        activate = true;
+        disable = false;
+      }
+    }
   }
 }
