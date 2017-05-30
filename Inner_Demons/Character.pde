@@ -28,18 +28,18 @@ void characterChecks() {
     switch(preset) {
     case 1:
       presetVar = "Female_preset1.png";
-      println("Preset 1- FEMALE");
       break;
     case 2:
-
+      presetVar = "Female_preset2.png";
       break;
     case 3:
-
+      presetVar = "Female_preset3.png";
       break;
     case 4:
-
+      presetVar = "Female_preset4.png";
       break;
     case 5:
+      presetVar = "Female_preset5.png";
       break;
     case 6:
 
