@@ -21,12 +21,13 @@
 //Images - Backgrounds
 PImage startBackground; 
 //Images - Characters
-
+PImage spriteSheet;
 //Images - Enemies
 
 //Character Global Variables
 int preset = 1;
 String gender = "Male";
+String presetVar = "Male_preset1.png";
 
 //Scene Checking Variables
 boolean menuScreen = true; //Starts off true (Because it's the starting screen)
@@ -47,6 +48,13 @@ int level = 0;
 //Credits
 int y = 700;
 
+//Player Declaration
+boolean keys[];
+Player Bob;
+boolean arrowCheck = false;
+boolean up = false;
+boolean down = false;
+
 void setup() {
   size(1000, 700); //Sets the size of the screen
   smooth();
@@ -54,11 +62,16 @@ void setup() {
   //Image Defining
   startBackground = loadImage("Starting Background.png");
   startBackground.resize(1000, 700);
+
+  //Player Defining
+  Bob = new Player();
+  keys = new boolean[128];
 }
 
 void draw() {
   checks(); //Runs all the screen checks constantly
   characterChecks(); //Constantly checks what character should be displayed.
+  move();
 }
 
 //The checks in the checks function just run through, to see what screen the user is supposed to be on.
@@ -102,4 +115,46 @@ void buttonClick(int x1, int x2, int y1, int y2, boolean activate, boolean disab
       }
     }
   }
+}
+
+/*
+This area is used to control User movement
+ */
+void move() {
+  int xDelta=0;
+  int yDelta=0;
+  //if (keys['w']) {
+  //  up = true;
+  //}
+  if (keys['a']) {
+    xDelta--;
+  }
+  if (keys['d']) {
+    xDelta++;
+  }
+  //if (up == true) { Unfinished jump feature
+  //  yDelta --;
+  //}
+  //if (y <= 550) {
+  //  up = false;
+  //  yDelta = 0;
+  //}
+
+  Bob.updatePlayer(xDelta, yDelta);
+}
+void keyPressed() {
+  if (keyPressed && key == CODED) {
+    System.out.println("Hey, you can't use the arrow keys!");
+    arrowCheck = true;
+    return;
+  }
+  keys[key] = true;
+}
+void keyReleased() {
+  if (arrowCheck == true) {
+    System.out.println("Try using: W, A, S, D!");
+    arrowCheck = false;
+    return;
+  }
+  keys[key] = false;
 }

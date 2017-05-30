@@ -169,9 +169,13 @@ void characterScreen() {  //The character selection screen, this is where the pl
   rect(20, 100, 600, 600);
   fill(255);
   textSize(30);
+  spriteSheet = loadImage(presetVar);
+  PImage display =spriteSheet.get(16 + 0, 704, 32, 65);
+  display.resize(200, 400);
   text("Preview", 270, 130);
   text("Gender: " +gender, 25, 550);
   text("Preset: " +preset, 25, 590);
+  image(display, 230, 100);
 }
 
 void quitScreen() {     //This is the quit confirmation screen, it basically just asks if the player really wants to switch screens.
@@ -295,6 +299,8 @@ void gameScreen() { //The start of the game screen - This is where all the actio
   if (level == 0) {
     background(startBackground); //This will be replaced with dialouge, but for now it's just this.
   }
+  Bob.setupSprites();
+  Bob.drawPlayer();
 }
 
 void optionsScreen() { //This is where the player can choose between: Settings - Help - Credits
@@ -349,11 +355,11 @@ void optionsScreen() { //This is where the player can choose between: Settings -
 }
 
 void creditsScreen() {  //Credits screen
-/*
+  /*
 The best way to describe this screen:
-This text is all attatched to the y variable, which is constantly moving upwards. 
-This makes all the text scroll upwards like normal credits you'd see in a movie.
-*/
+   This text is all attatched to the y variable, which is constantly moving upwards. 
+   This makes all the text scroll upwards like normal credits you'd see in a movie.
+   */
   int x = width/2-200;
   y--;
   if (y<= -1000) {
@@ -368,7 +374,7 @@ This makes all the text scroll upwards like normal credits you'd see in a movie.
   text("Credits", x, y);
   text("Developers", x-100, y+100);
   textSize(50);
-  text("Ben Kenard", x, y+200);
+  text("Ben Kennard", x, y+200);
   text("Eric Mazza", x, y+300);
   text("Shayne Lisk", x, y+400);
   textSize(100);
