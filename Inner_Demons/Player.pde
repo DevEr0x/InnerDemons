@@ -1,7 +1,6 @@
 class Player
 {
   float x, y;
-  PImage spriteSheet;
   PImage [][] movement;
   boolean inMotion; //Lets you know if character is moving or not
   int currentDirection;
@@ -13,9 +12,9 @@ class Player
   {
     inMotion = false;
     currentDirection=1;
-    currentFrame=0;
-    x = 300;
-    y = 300;
+    currentFrame=3;
+    x = 100;
+    y = 625;
 
     setupSprites();
   }
@@ -23,13 +22,14 @@ class Player
   void setupSprites()
   {
     movement= new PImage[12][9]; //Create 2D array for Images
-    spriteSheet = loadImage("skeleton.png"); //Load entire spritesheet
+    characterChecks();
+    spriteSheet = loadImage(presetVar); //Load entire spritesheet
     for (int i = 0; i < 9; i++)
     {
-      movement[0][i] = spriteSheet.get(16 + 64 * i, 512, 32, 56); //Upward moving sprite
-      movement[1][i] = spriteSheet.get(16 + 64 * i, 576, 32, 56); //Left moving sprite
-      movement[2][i] = spriteSheet.get(16 + 64 * i, 640, 32, 56); //Downward moving sprite
-      movement[3][i] = spriteSheet.get(16 + 64 * i, 704, 32, 56); //Right moving sprite
+      movement[0][i] = spriteSheet.get(16 + 64 * i, 512, 32, 65); //Upward moving sprite
+      movement[1][i] = spriteSheet.get(16 + 64 * i, 576, 32, 65); //Left moving sprite
+      movement[2][i] = spriteSheet.get(16 + 64 * i, 640, 32, 65); //Downward moving sprite
+      movement[3][i] = spriteSheet.get(16 + 64 * i, 704, 32, 65); //Right moving sprite
     }
   }
 
@@ -43,7 +43,7 @@ class Player
   }
   void updatePlayer(int xDelta, int yDelta)
   {
-    currentFrame = (currentFrame + 0.2 /*Changing the 0.2 changes animation speed*/) % 8; //helps change through the frames
+    currentFrame = (currentFrame + 0.4 /*Changing the 0.2 changes animation speed*/) % 8; //helps change through the frames
     inMotion = true;
 
     if (xDelta ==0 && yDelta ==0)
