@@ -3,21 +3,21 @@ void characterChecks() {
     switch(preset) {
     case 1:
       presetVar = "Male_preset1.png";
-      println("Preset 1- MALE");
       break;
     case 2:
-
+      presetVar = "Male_preset2.png";
       break;
     case 3:
-
+      presetVar = "Male_preset3.png";
       break;
     case 4:
-
+      presetVar = "Male_preset4.png";
       break;
     case 5:
+      presetVar = "Male_preset5.png";
       break;
     case 6:
-
+      presetVar = "Male_preset6.png";
       break;
     default:
       println("Something went wrong with Male presets.");
@@ -42,7 +42,7 @@ void characterChecks() {
       presetVar = "Female_preset5.png";
       break;
     case 6:
-
+      presetVar = "Female_preset6.png";
       break;
     default:
       println("Something went wrong with Female presets.");
