@@ -301,6 +301,7 @@ void gameScreen() { //The start of the game screen - This is where all the actio
   }
   Bob.setupSprites();
   Bob.drawPlayer();
+  screenDisplay();
 }
 
 void optionsScreen() { //This is where the player can choose between: Settings - Help - Credits
@@ -386,4 +387,6 @@ The best way to describe this screen:
   text("Project Crystal - Site Hosting", x-200, y+900); //Website hosting
   textSize(75);
   text("Thanks for playing!", x-200, y+1000);
+}
+void pauseScreen() {
 }

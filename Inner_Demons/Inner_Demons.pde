@@ -38,6 +38,7 @@ boolean difficultyScreen = false;
 boolean gameScreen = false;
 boolean optionsScreen = false;
 boolean creditsScreen = false;
+boolean pauseScreen = false;
 
 //Difficulty Variables
 int difficulty = 2;
@@ -54,6 +55,8 @@ Player Bob;
 boolean arrowCheck = false;
 boolean up = false;
 boolean down = false;
+
+int health = 100;
 
 void setup() {
   size(1000, 700); //Sets the size of the screen
@@ -96,6 +99,9 @@ void checks() {
   }
   if (creditsScreen) {
     creditsScreen();
+  }
+  if (pauseScreen) {
+    pauseScreen();
   }
 }
 
