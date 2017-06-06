@@ -11,7 +11,7 @@ class Player
   Player()
   {
     inMotion = false;
-    currentDirection=1;
+    currentDirection=3;
     currentFrame=3;
     x = 100;
     y = 625;
@@ -60,14 +60,13 @@ class Player
 
     x = x + xDelta;
     y = y + yDelta;
-    
-    if(isPlayerOffScreen(x, y))
+
+    if (isPlayerOffScreen(x, y))
     {
       x = x - xDelta;
       y = y - yDelta;
     }
-
-}
+  }
   boolean isPlayerOffScreen(float x, float y)
   {
     if (x < 0 || x > width-30 || y<0 || y > height - 56)

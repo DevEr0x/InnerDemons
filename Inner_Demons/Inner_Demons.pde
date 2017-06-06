@@ -20,6 +20,7 @@
 
 //Images - Backgrounds
 PImage startBackground; 
+PImage background2;
 //Images - Characters
 PImage spriteSheet;
 //Images - Enemies
@@ -49,6 +50,10 @@ int level = 0;
 //Credits
 int y = 700;
 
+//PauseMenu
+int timer = 0;
+int counter = 0;
+
 //Player Declaration
 boolean keys[];
 Player Bob;
@@ -58,6 +63,12 @@ boolean down = false;
 
 int health = 100;
 
+//Weapons
+float damageMod;
+float damage =5;
+int currentWeapon = 1;
+PImage[] weaponImage = new PImage[10];
+
 void setup() {
   size(1000, 700); //Sets the size of the screen
   smooth();
@@ -65,6 +76,8 @@ void setup() {
   //Image Defining
   startBackground = loadImage("Starting Background.png");
   startBackground.resize(1000, 700);
+  background2 = loadImage("background2.png");
+  background2.resize(1000, 700);
 
   //Player Defining
   Bob = new Player();
@@ -74,6 +87,7 @@ void setup() {
 void draw() {
   checks(); //Runs all the screen checks constantly
   characterChecks(); //Constantly checks what character should be displayed.
+  weaponChecks(); //Constantly checks what weapon should be displayed
   move();
 }
 
@@ -129,9 +143,10 @@ This area is used to control User movement
 void move() {
   int xDelta=0;
   int yDelta=0;
-  //if (keys['w']) {
-  //  up = true;
-  //}
+  if (keys['w']) {
+    //up = true;
+    level++;
+  }
   if (keys['a']) {
     xDelta--;
   }
