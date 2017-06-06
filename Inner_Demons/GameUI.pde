@@ -14,15 +14,15 @@ void screenDisplay() {
     textSize(30);
     text(health+"%", 10, 40);
   }
-  if (health < 0) {
+  if (health <= 0) {
     gameScreen = false;
-    background(0);
+    deathScreen = true;
   }
 
   //Level Display
   textSize(30);
   fill(0);
-  text("Level: "+level, 250, 40);
+  text("Level: "+level + "/20", 250, 40);
 
   //Pause Button
   fill(0);

@@ -33,6 +33,12 @@ class Player
     }
   }
 
+  void levelChange() {
+    level++;
+    currentDirection = 3;
+    x = 100;
+    y = 625;
+  }
 
   void drawPlayer()
   {
