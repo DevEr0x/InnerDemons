@@ -20,6 +20,9 @@
 
 //Images - Backgrounds
 PImage startBackground; 
+PImage background2;
+PImage background3;
+
 //Images - Characters
 PImage spriteSheet;
 //Images - Enemies
@@ -39,6 +42,8 @@ boolean gameScreen = false;
 boolean optionsScreen = false;
 boolean creditsScreen = false;
 boolean pauseScreen = false;
+boolean deathScreen = false;
+boolean winScreen = false;
 
 //Difficulty Variables
 int difficulty = 2;
@@ -49,6 +54,10 @@ int level = 0;
 //Credits
 int y = 700;
 
+//PauseMenu
+int timer = 0;
+int counter = 0;
+
 //Player Declaration
 boolean keys[];
 Player Bob;
@@ -58,6 +67,13 @@ boolean down = false;
 
 int health = 100;
 
+//Weapons
+float damageMod = 0;
+float damage = 5;
+float finalDamage;
+int currentWeapon = 1;
+PImage[] weaponImage = new PImage[10];
+
 void setup() {
   size(1000, 700); //Sets the size of the screen
   smooth();
@@ -65,6 +81,10 @@ void setup() {
   //Image Defining
   startBackground = loadImage("Starting Background.png");
   startBackground.resize(1000, 700);
+  background2 = loadImage("background2.png");
+  background2.resize(1000, 700);
+  background3 = loadImage("background3.png");
+  background3.resize(1000, 700);
 
   //Player Defining
   Bob = new Player();
@@ -74,6 +94,7 @@ void setup() {
 void draw() {
   checks(); //Runs all the screen checks constantly
   characterChecks(); //Constantly checks what character should be displayed.
+  weaponChecks(); //Constantly checks what weapon should be displayed
   move();
 }
 
@@ -103,6 +124,12 @@ void checks() {
   if (pauseScreen) {
     pauseScreen();
   }
+  if (deathScreen) {
+    deathScreen();
+  }
+  if (winScreen) {
+    winScreen();
+  }
 }
 
 /*
@@ -129,14 +156,18 @@ This area is used to control User movement
 void move() {
   int xDelta=0;
   int yDelta=0;
-  //if (keys['w']) {
-  //  up = true;
-  //}
+  if (keys['w']) {
+    //up = true;
+    Bob.levelChange();
+  }
   if (keys['a']) {
     xDelta--;
   }
   if (keys['d']) {
     xDelta++;
+  }
+  if (keys['s']) {
+    health --;
   }
   //if (up == true) { Unfinished jump feature
   //  yDelta --;

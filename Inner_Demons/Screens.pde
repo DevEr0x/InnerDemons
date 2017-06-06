@@ -296,8 +296,19 @@ void difficultyScreen() {  //Difficulty selection screen, player chooses how har
 }
 
 void gameScreen() { //The start of the game screen - This is where all the action will take place.
-  if (level == 0) {
-    background(startBackground); //This will be replaced with dialouge, but for now it's just this.
+  if (level >= 0 && level < 5) {
+    background(startBackground); //This will be replaced with dialouge, but for now it's just this
+    monsterCall();
+  }
+  if (level >= 5 && level<10) {
+    background(background2);
+  }
+  if (level >=10) {
+    background(background3);
+  }
+  if (level >= 21) {
+    winScreen = true;
+    gameScreen = false;
   }
   Bob.setupSprites();
   Bob.drawPlayer();
@@ -388,5 +399,27 @@ The best way to describe this screen:
   textSize(75);
   text("Thanks for playing!", x-200, y+1000);
 }
-void pauseScreen() {
+void pauseScreen() {  //Pause screen- this is where the player will be able to adjust the items in their inventory
+  fill(255, 80);
+  stroke(0);
+  rectMode(CENTER);
+  rect(width/2, height/2, 500, 500);
+
+  fill(0);
+  textSize(40);
+  text("Inventory", 400, 150);
+}
+
+void deathScreen() {
+  background(0);
+  fill(255);
+  textSize(200);
+  text("YOU DIED", 30, 300);
+}
+
+void winScreen() {
+  background(0);
+  fill(255);
+  textSize(200);
+  text("YOU WIN", 60, 300);
 }
