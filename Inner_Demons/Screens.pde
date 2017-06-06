@@ -170,7 +170,7 @@ void characterScreen() {  //The character selection screen, this is where the pl
   fill(255);
   textSize(30);
   spriteSheet = loadImage(presetVar);
-  PImage display =spriteSheet.get(16 + 0, 704, 32, 65);
+  PImage display =spriteSheet.get(10 + 0, 706, 40, 65);
   display.resize(200, 400);
   text("Preview", 270, 130);
   text("Gender: " +gender, 25, 550);
