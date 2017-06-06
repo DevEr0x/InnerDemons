@@ -26,10 +26,10 @@ class Player
     spriteSheet = loadImage(presetVar); //Load entire spritesheet
     for (int i = 0; i < 9; i++)
     {
-      movement[0][i] = spriteSheet.get(16 + 64 * i, 514, 32, 65); //Upward moving sprite
-      movement[1][i] = spriteSheet.get(16 + 64 * i, 578, 32, 65); //Left moving sprite
+      movement[0][i] = spriteSheet.get(21 + 64 * i, 514, 32, 65); //Upward moving sprite
+      movement[1][i] = spriteSheet.get(16 + 64 * i, 578, 40, 65); //Left moving sprite
       movement[2][i] = spriteSheet.get(16 + 64 * i, 642, 32, 65); //Downward moving sprite
-      movement[3][i] = spriteSheet.get(16 + 64 * i, 706, 32, 65); //Right moving sprite
+      movement[3][i] = spriteSheet.get(10 + 64 * i, 706, 40, 65); //Right moving sprite
     }
   }
 
