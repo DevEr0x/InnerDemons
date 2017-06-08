@@ -176,6 +176,9 @@ void characterScreen() {  //The character selection screen, this is where the pl
   text("Gender: " +gender, 25, 550);
   text("Preset: " +preset, 25, 590);
   image(display, 230, 100);
+  PImage displayWeapon = weaponImage[3];
+  displayWeapon.resize(200, 50);
+  image(displayWeapon, 315, 360);
 }
 
 void quitScreen() {     //This is the quit confirmation screen, it basically just asks if the player really wants to switch screens.
@@ -303,16 +306,26 @@ void gameScreen() { //The start of the game screen - This is where all the actio
   if (level >= 5 && level<10) {
     background(background2);
   }
-  if (level >=10) {
+  if (level >=10 && level < 15) {
     background(background3);
+  }
+  if (level >=15 && level < 20) {
+    background(background4);
+  }
+  if (level==20) {
+    background(bossBackground);
   }
   if (level >= 21) {
     winScreen = true;
     gameScreen = false;
   }
+  randomChest.chestDisplay();
   Bob.setupSprites();
   Bob.drawPlayer();
   screenDisplay();
+  for (int i = 1; i <= weaponCount; i++) {
+    image(inventory[i], i*50, 100);
+  }
 }
 
 void optionsScreen() { //This is where the player can choose between: Settings - Help - Credits

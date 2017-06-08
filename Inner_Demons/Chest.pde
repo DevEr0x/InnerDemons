@@ -1,6 +1,5 @@
 class Chest {
-  PVector chest = new PVector(700,644);
-  PVector playerPosition = new PVector(0, 0);
+  PVector chest = new PVector(700, 644);
   PImage chestIMG;
   boolean open = false;
 
@@ -8,21 +7,11 @@ class Chest {
   }
 
   void chestDisplay() {
-    chestIMG = loadImage("Chest Closed.png");
-    chestIMG.resize(40,40);
-    image(chestIMG, chest.x, chest.y);
-  }
-
-
-  void chestProbability() {
-  }
-
-  void chestUpdate(float tempPlayerX, float tempPlayerY) {
-    playerPosition.x = tempPlayerX;
-    playerPosition.y = tempPlayerY;
-
-    if (chest.x<playerPosition.x && chest.x >playerPosition.x +20) {
+    if (chest.x <= Bob.x && chest.x+30 >= Bob.x +10) {
       chestIMG = loadImage("Chest Open.png");
     }
+    chestIMG = loadImage("Chest Closed.png");
+    chestIMG.resize(40, 40);
+    image(chestIMG, chest.x, chest.y);
   }
 }
