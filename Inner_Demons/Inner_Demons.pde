@@ -88,6 +88,8 @@ int weaponCount = 1;
 
 //Chest
 int luck;
+int chestAppearLuck;
+boolean chestOpen = false;
 
 void setup() {
   size(1000, 700); //Sets the size of the screen
@@ -187,9 +189,6 @@ void move() {
   }
   if (keys['s']) {
     health --;
-  }
-  if (keys['c']) {
-    chestOpen();
   }
   //if (up == true) { Unfinished jump feature
   //  yDelta --;

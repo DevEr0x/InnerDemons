@@ -34,6 +34,8 @@ class Player
   }
 
   void levelChange() {
+    chestOpen = false;
+    chestAppearLuck = (int) random(1, 3);
     fill(255, 90);
     text("Level Up!", 70, 70);
     level++;

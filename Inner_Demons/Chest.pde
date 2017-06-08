@@ -7,11 +7,22 @@ class Chest {
   }
 
   void chestDisplay() {
-    if (chest.x <= Bob.x && chest.x+30 >= Bob.x +10) {
-      chestIMG = loadImage("Chest Open.png");
-    }
     chestIMG = loadImage("Chest Closed.png");
+    if (chest.x <= Bob.x && chest.x+40 >= Bob.x +10) {
+      if (keys['e']) {
+        if (chestOpen == false) {
+          chestOpen();
+        }
+        chestOpen = true;
+      }
+    }
     chestIMG.resize(40, 40);
-    image(chestIMG, chest.x, chest.y);
+    if (chestOpen == true) {
+      chestIMG = loadImage("Chest Open.png");
+      chestIMG.resize(70, 70);
+      image(chestIMG, chest.x-18, chest.y-10);
+    } else {
+      image(chestIMG, chest.x, chest.y);
+    }
   }
 }

@@ -319,13 +319,12 @@ void gameScreen() { //The start of the game screen - This is where all the actio
     winScreen = true;
     gameScreen = false;
   }
-  randomChest.chestDisplay();
+  if (chestAppearLuck == 2) {
+    randomChest.chestDisplay();
+  }
   Bob.setupSprites();
   Bob.drawPlayer();
   screenDisplay();
-  for (int i = 1; i <= weaponCount; i++) {
-    image(inventory[i], i*50, 100);
-  }
 }
 
 void optionsScreen() { //This is where the player can choose between: Settings - Help - Credits
@@ -421,6 +420,11 @@ void pauseScreen() {  //Pause screen- this is where the player will be able to a
   fill(0);
   textSize(40);
   text("Inventory", 400, 150);
+  
+  rectMode(0);
+  fill(255,80);
+  stroke(0);
+  rect(300,200,100,100);
 }
 
 void deathScreen() {
