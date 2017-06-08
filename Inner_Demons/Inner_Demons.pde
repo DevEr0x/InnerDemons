@@ -22,10 +22,15 @@
 PImage startBackground; 
 PImage background2;
 PImage background3;
+PImage background4;
+PImage bossBackground;
 
 //Images - Characters
 PImage spriteSheet;
 //Images - Enemies
+
+//Chest object
+Chest randomChest = new Chest();
 
 //Character Global Variables
 int preset = 1;
@@ -74,6 +79,16 @@ float finalDamage;
 int currentWeapon = 1;
 PImage[] weaponImage = new PImage[10];
 
+/*
+This section below determines what items the player has in their inventory.
+ If the player only has 3 items in his inventory, then only 3 items can be displayed.
+ */
+PImage[] inventory = new PImage[10];
+int weaponCount = 1;
+
+//Chest
+int luck;
+
 void setup() {
   size(1000, 700); //Sets the size of the screen
   smooth();
@@ -85,6 +100,10 @@ void setup() {
   background2.resize(1000, 700);
   background3 = loadImage("background3.png");
   background3.resize(1000, 700);
+  background4 = loadImage("background4.png");
+  background4.resize(1000, 700);
+  bossBackground= loadImage("boss_background.png");
+  bossBackground.resize(1000, 700);
 
   //Player Defining
   Bob = new Player();
@@ -161,13 +180,16 @@ void move() {
     Bob.levelChange();
   }
   if (keys['a']) {
-    xDelta--;
+    xDelta -=2;
   }
   if (keys['d']) {
-    xDelta++;
+    xDelta+=2;
   }
   if (keys['s']) {
     health --;
+  }
+  if (keys['c']) {
+    chestOpen();
   }
   //if (up == true) { Unfinished jump feature
   //  yDelta --;

@@ -34,6 +34,8 @@ class Player
   }
 
   void levelChange() {
+    fill(255, 90);
+    text("Level Up!", 70, 70);
     level++;
     currentDirection = 3;
     x = 100;
@@ -49,14 +51,14 @@ class Player
   }
   void updatePlayer(int xDelta, int yDelta)
   {
-    currentFrame = (currentFrame + 0.4 /*Changing the 0.2 changes animation speed*/) % 8; //helps change through the frames
+    currentFrame = (currentFrame + 0.6 /*Changing the 0.2 changes animation speed*/) % 8; //helps change through the frames
     inMotion = true;
 
     if (xDelta ==0 && yDelta ==0)
       inMotion =false;
-    else if (xDelta == -1)
+    else if (xDelta <= -1)
       currentDirection = LEFT;
-    else if (xDelta == 1)
+    else if (xDelta >= 1)
       currentDirection = RIGHT;
     else if (yDelta == -1)
       currentDirection = UP;
@@ -71,6 +73,15 @@ class Player
     {
       x = x - xDelta;
       y = y - yDelta;
+    }
+    if (currentDirection==3) {
+      image(weaponImage[currentWeapon], x+10, y+40);
+    }
+    if (currentDirection==1) {
+      pushMatrix();
+      scale(-1, 1);
+      image(weaponImage[currentWeapon], x+30, y+40);
+      popMatrix();
     }
   }
   boolean isPlayerOffScreen(float x, float y)
