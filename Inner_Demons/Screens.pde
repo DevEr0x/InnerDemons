@@ -420,11 +420,34 @@ void pauseScreen() {  //Pause screen- this is where the player will be able to a
   fill(0);
   textSize(40);
   text("Inventory", 400, 150);
-  
+
   rectMode(0);
-  fill(255,80);
+  fill(255, 80);
   stroke(0);
-  rect(300,200,100,100);
+  //Row 1
+  rect(280, 250, 100, 100);
+  rect(395, 250, 100, 100);
+  rect(510, 250, 100, 100);
+  rect(625, 250, 100, 100);
+  //Row 2
+  rect(280, 400, 100, 100);
+  rect(395, 400, 100, 100);
+  rect(510, 400, 100, 100);
+  rect(625, 400, 100, 100);
+
+  //Images
+  for(int i = 1; i <= weaponCount; i++){
+    inventory[i].resize(100, 100);
+  }
+  image(inventory[1], 300, 265);
+  if(inventory[2] == null) return;
+  image(inventory[2], 410, 265);
+  if(inventory[3] == null) return;
+  image(inventory[3], 530, 265);
+  if(inventory[4] == null) return;
+  image(inventory[4], 650, 265);
+  if(inventory[5] == null) return;
+  image(inventory[5], 300, 415);
 }
 
 void deathScreen() {

@@ -8,7 +8,7 @@ class Chest {
 
   void chestDisplay() {
     chestIMG = loadImage("Chest Closed.png");
-    if (chest.x <= Bob.x && chest.x+40 >= Bob.x +10) {
+    if (chest.x-10 <= Bob.x && chest.x+40 >= Bob.x +10) {
       if (keys['e']) {
         if (chestOpen == false) {
           chestOpen();
