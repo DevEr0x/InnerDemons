@@ -46,10 +46,27 @@ class Player
 
   void drawPlayer()
   {
-    if (inMotion)
+    if (inMotion) {
       image(movement[currentDirection][1 + int(currentFrame)], x, y); //Cycles through the frames with the help of line 46
-    else 
-    image(movement[currentDirection][0], x, y);
+      if (currentDirection ==3) {
+        image(weaponImage[currentWeapon], x+10, y+40);
+      } else {
+        pushMatrix();
+        scale(-1, 1);
+        image(weaponImage[currentWeapon], -x-20, y+40);
+        popMatrix();
+      }
+    } else { 
+      image(movement[currentDirection][0], x, y);
+      if (currentDirection ==3) {
+        image(weaponImage[currentWeapon], x+10, y+40);
+      } else {
+        pushMatrix();
+        scale(-1, 1);
+        image(weaponImage[currentWeapon], -x-20, y+40);
+        popMatrix();
+      }
+    }
   }
   void updatePlayer(int xDelta, int yDelta)
   {
@@ -75,15 +92,6 @@ class Player
     {
       x = x - xDelta;
       y = y - yDelta;
-    }
-    if (currentDirection==3) {
-      image(weaponImage[currentWeapon], x+10, y+40);
-    }
-    if (currentDirection==1) {
-      pushMatrix();
-      scale(-1, 1);
-      image(weaponImage[currentWeapon], x+30, y+40);
-      popMatrix();
     }
   }
   boolean isPlayerOffScreen(float x, float y)

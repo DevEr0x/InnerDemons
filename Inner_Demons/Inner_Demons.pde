@@ -84,6 +84,7 @@ This section below determines what items the player has in their inventory.
  If the player only has 3 items in his inventory, then only 3 items can be displayed.
  */
 PImage[] inventory = new PImage[10];
+int[] inventoryTrack = new int[10];
 int weaponCount = 1;
 
 //Chest
@@ -92,7 +93,7 @@ int chestAppearLuck;
 boolean chestOpen = false;
 
 void setup() {
-  size(1000, 700); //Sets the size of the screen
+  size(1000, 700, P3D); //Sets the size of the screen
   smooth();
 
   //Image Defining
@@ -154,24 +155,6 @@ void checks() {
 }
 
 /*
-Work in progress...
- Short description of the code below:
- This is supposed to make the button creation process go by a lot quicker and use less code... 
- currently, it doesn't work, but I have hopes for it to become very usefull. 
- Any suggestions for it would be very helpful.
- */
-void buttonClick(int x1, int x2, int y1, int y2, boolean activate, boolean disable) {
-  if (mousePressed) {
-    if (mouseX>=x1 && mouseX<=x2) {
-      if (mouseY>=y1 && mouseY<=y2) { //Selects YES
-        activate = true;
-        disable = false;
-      }
-    }
-  }
-}
-
-/*
 This area is used to control User movement
  */
 void move() {
@@ -190,14 +173,6 @@ void move() {
   if (keys['s']) {
     health --;
   }
-  //if (up == true) { Unfinished jump feature
-  //  yDelta --;
-  //}
-  //if (y <= 550) {
-  //  up = false;
-  //  yDelta = 0;
-  //}
-
   Bob.updatePlayer(xDelta, yDelta);
 }
 void keyPressed() {
@@ -215,4 +190,14 @@ void keyReleased() {
     return;
   }
   keys[key] = false;
+}
+
+void flipImageH(PImage image, float x, float y) {
+    beginShape(QUADS);
+    texture(image);
+    vertex(0, 0, width, 0);
+    vertex(width, 0, 0, 0);
+    vertex(width, height, 0, height);
+    vertex(0, height, width, height);
+    endShape();
 }
