@@ -49,6 +49,7 @@ boolean creditsScreen = false;
 boolean pauseScreen = false;
 boolean deathScreen = false;
 boolean winScreen = false;
+boolean helpScreen = false;
 
 //Difficulty Variables
 int difficulty = 2;
@@ -87,6 +88,10 @@ PImage[] inventory = new PImage[10];
 int[] inventoryTrack = new int[10];
 int weaponCount = 1;
 
+//Weapon location variables
+float weaponX;
+float weaponY;
+
 //Chest
 int luck;
 int chestAppearLuck;
@@ -115,8 +120,8 @@ void setup() {
 
 void draw() {
   checks(); //Runs all the screen checks constantly
-  characterChecks(); //Constantly checks what character should be displayed.
   weaponChecks(); //Constantly checks what weapon should be displayed
+  characterChecks(); //Constantly checks what character should be displayed.
   move();
 }
 
@@ -152,6 +157,9 @@ void checks() {
   if (winScreen) {
     winScreen();
   }
+  if (helpScreen) {
+    helpScreen();
+  }
 }
 
 /*
@@ -165,18 +173,20 @@ void move() {
     Bob.levelChange();
   }
   if (keys['a']) {
-    xDelta -=2;
+    xDelta -=4;
   }
   if (keys['d']) {
-    xDelta+=2;
+    xDelta+=4;
   }
   if (keys['s']) {
     health --;
   }
   Bob.updatePlayer(xDelta, yDelta);
 }
+
 void keyPressed() {
   if (keyPressed && key == CODED) {
+    text("Use 'W A S D' to move - using the arrow keys can crash the game!", 0, 100);
     System.out.println("Hey, you can't use the arrow keys!");
     arrowCheck = true;
     return;
@@ -185,19 +195,10 @@ void keyPressed() {
 }
 void keyReleased() {
   if (arrowCheck == true) {
+    text("Use 'W A S D' to move - using the arrow keys can crash the game!", 0, 100);
     System.out.println("Try using: W, A, S, D!");
     arrowCheck = false;
     return;
   }
   keys[key] = false;
-}
-
-void flipImageH(PImage image, float x, float y) {
-    beginShape(QUADS);
-    texture(image);
-    vertex(0, 0, width, 0);
-    vertex(width, 0, 0, 0);
-    vertex(width, height, 0, height);
-    vertex(0, height, width, height);
-    endShape();
 }

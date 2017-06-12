@@ -356,6 +356,8 @@ void optionsScreen() { //This is where the player can choose between: Settings -
   if (mousePressed) {
     if (mouseX>=750 && mouseX<=950) { //Selects HELP button
       if (mouseY>=200 && mouseY<=300) {
+        helpScreen = true;
+        optionsScreen = false;
       }
     }
     if (mouseX>=750 && mouseX<=950) { //Selects SETTINGS button
@@ -502,16 +504,54 @@ void pauseScreen() {  //Pause screen- this is where the player will be able to a
   image(inventory[8], 650, 415);
 }
 
-void deathScreen() {
+void deathScreen() {  //Death screen, this shows when the player has reached 0% health
   background(0);
   fill(255);
   textSize(200);
   text("YOU DIED", 30, 300);
 }
 
-void winScreen() {
+void winScreen() { //Win screen, this shows when the player has beat the boss level(Level 20) in the gameScreen.
   background(0);
   fill(255);
   textSize(200);
   text("YOU WIN", 60, 300);
+}
+
+void helpScreen() {
+  background(255);
+  fill(0);
+  textSize(100);
+  text("Help", 400, 100);
+
+  textSize(30);
+  text("If you need help, please refer to the game website.", 10, 160);
+  text("It lists any and all information that you might need to know about", 10, 200);
+  text("this game, and how to play it. Have fun!", 10, 240);
+
+  fill(255);
+  rect(90, 370, 700, 40); //Link box
+  rect(20, 450, 200, 100); //Back box
+
+  fill(0);
+  textSize(80);
+  text("Back", 30, 530);
+
+  fill(0, 0, 255);
+  textSize(30);
+  text("http://projectcrystal.ddns.net/Inner-Demons/", 100, 400);
+
+  if (mousePressed) {
+    if (mouseX>=90 && mouseX<=790) {
+      if (mouseY>=370 && mouseY<=410) {
+        link("http://projectcrystal.ddns.net/Inner-Demons/");
+      }
+    }
+    if (mouseX>=20 && mouseX<=220) {
+      if (mouseY>=450 && mouseY<= 550) {
+        optionsScreen = true;
+        helpScreen = false;
+      }
+    }
+  }
 }

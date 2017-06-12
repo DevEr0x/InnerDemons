@@ -44,26 +44,27 @@ class Player
     y = 625;
   }
 
-  void drawPlayer()
-  {
+  void drawPlayer() {
+    weaponX = x;
+    weaponY = y+40;
     if (inMotion) {
       image(movement[currentDirection][1 + int(currentFrame)], x, y); //Cycles through the frames with the help of line 46
       if (currentDirection ==3) {
-        image(weaponImage[currentWeapon], x+10, y+40);
+        image(weaponImage[currentWeapon], weaponX+10, weaponY);
       } else {
         pushMatrix();
         scale(-1, 1);
-        image(weaponImage[currentWeapon], -x-20, y+40);
+        image(weaponImage[currentWeapon], -weaponX-20, weaponY);
         popMatrix();
       }
     } else { 
       image(movement[currentDirection][0], x, y);
       if (currentDirection ==3) {
-        image(weaponImage[currentWeapon], x+10, y+40);
+        image(weaponImage[currentWeapon], weaponX+10, weaponY);
       } else {
         pushMatrix();
         scale(-1, 1);
-        image(weaponImage[currentWeapon], -x-20, y+40);
+        image(weaponImage[currentWeapon], -weaponX-20, weaponY);
         popMatrix();
       }
     }

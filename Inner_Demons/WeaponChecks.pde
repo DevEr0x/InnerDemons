@@ -20,9 +20,11 @@ void weaponChecks() {
     break;
   case 7:
     damageMod = 1.9;
+    weaponX = weaponX-20;
     break;
   case 8: 
     damageMod = 2;
+    weaponX = weaponX-20;
     break;
   case 9:
     damageMod = 1.5;   
