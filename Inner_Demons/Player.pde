@@ -34,6 +34,8 @@ class Player
   }
 
   void levelChange() {
+    chestOpen = false;
+    chestAppearLuck = (int) random(1, 3);
     fill(255, 90);
     text("Level Up!", 70, 70);
     level++;
@@ -42,12 +44,30 @@ class Player
     y = 625;
   }
 
-  void drawPlayer()
-  {
-    if (inMotion)
+  void drawPlayer() {
+    weaponX = x;
+    weaponY = y+40;
+    if (inMotion) {
       image(movement[currentDirection][1 + int(currentFrame)], x, y); //Cycles through the frames with the help of line 46
-    else 
-    image(movement[currentDirection][0], x, y);
+      if (currentDirection ==3) {
+        image(weaponImage[currentWeapon], weaponX+10, weaponY);
+      } else {
+        pushMatrix();
+        scale(-1, 1);
+        image(weaponImage[currentWeapon], -weaponX-20, weaponY);
+        popMatrix();
+      }
+    } else { 
+      image(movement[currentDirection][0], x, y);
+      if (currentDirection ==3) {
+        image(weaponImage[currentWeapon], weaponX+10, weaponY);
+      } else {
+        pushMatrix();
+        scale(-1, 1);
+        image(weaponImage[currentWeapon], -weaponX-20, weaponY);
+        popMatrix();
+      }
+    }
   }
   void updatePlayer(int xDelta, int yDelta)
   {
@@ -73,15 +93,6 @@ class Player
     {
       x = x - xDelta;
       y = y - yDelta;
-    }
-    if (currentDirection==3) {
-      image(weaponImage[currentWeapon], x+10, y+40);
-    }
-    if (currentDirection==1) {
-      pushMatrix();
-      scale(-1, 1);
-      image(weaponImage[currentWeapon], x+30, y+40);
-      popMatrix();
     }
   }
   boolean isPlayerOffScreen(float x, float y)

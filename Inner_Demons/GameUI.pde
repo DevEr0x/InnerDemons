@@ -21,7 +21,11 @@ void screenDisplay() {
 
   //Level Display
   textSize(30);
-  fill(0);
+  if (level < 5) {
+    fill(0);
+  } else {
+    fill(255);
+  }
   text("Level: "+level + "/20", 250, 40);
 
   //Pause Button
@@ -49,5 +53,4 @@ void screenDisplay() {
       }
     }
   }
-  println(counter+ "timer:"+ timer);
 }

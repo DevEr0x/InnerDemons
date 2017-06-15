@@ -319,13 +319,12 @@ void gameScreen() { //The start of the game screen - This is where all the actio
     winScreen = true;
     gameScreen = false;
   }
-  randomChest.chestDisplay();
+  if (chestAppearLuck == 2) {
+    randomChest.chestDisplay();
+  }
   Bob.setupSprites();
   Bob.drawPlayer();
   screenDisplay();
-  for (int i = 1; i <= weaponCount; i++) {
-    image(inventory[i], i*50, 100);
-  }
 }
 
 void optionsScreen() { //This is where the player can choose between: Settings - Help - Credits
@@ -357,6 +356,8 @@ void optionsScreen() { //This is where the player can choose between: Settings -
   if (mousePressed) {
     if (mouseX>=750 && mouseX<=950) { //Selects HELP button
       if (mouseY>=200 && mouseY<=300) {
+        helpScreen = true;
+        optionsScreen = false;
       }
     }
     if (mouseX>=750 && mouseX<=950) { //Selects SETTINGS button
@@ -421,18 +422,136 @@ void pauseScreen() {  //Pause screen- this is where the player will be able to a
   fill(0);
   textSize(40);
   text("Inventory", 400, 150);
+
+  rectMode(0);
+  fill(255, 80);
+  stroke(0);
+  //Row 1
+  rect(280, 250, 100, 100);
+  rect(395, 250, 100, 100);
+  rect(510, 250, 100, 100);
+  rect(625, 250, 100, 100);
+  //Row 2
+  rect(280, 400, 100, 100);
+  rect(395, 400, 100, 100);
+  rect(510, 400, 100, 100);
+  rect(625, 400, 100, 100);
+
+  if (mousePressed) {
+    if (mouseX>=280 && mouseX<= 380) {
+      if (mouseY>=250 && mouseY<=350) {
+        currentWeapon = inventoryTrack[1];
+      }
+    }
+    if (mouseX>=395 && mouseX<= 495) {
+      if (mouseY>=250 && mouseY<=350) {
+        if (inventory[2] == null) return;
+        currentWeapon = inventoryTrack[2];
+      }
+    }
+    if (mouseX>=510 && mouseX<= 610) {
+      if (mouseY>=250 && mouseY<=350) {
+        if (inventory[3] == null) return;
+        currentWeapon = inventoryTrack[3];
+      }
+    }
+    if (mouseX>=625 && mouseX<= 725) {
+      if (mouseY>=250 && mouseY<=350) {
+        if (inventory[4] == null) return;
+        currentWeapon = inventoryTrack[4];
+      }
+    }
+    if (mouseX>=280 && mouseX<= 380) {
+      if (mouseY>=400 && mouseY<=500) {
+        if (inventory[5] == null) return;
+        currentWeapon = inventoryTrack[5];
+      }
+    }
+    if (mouseX>=395 && mouseX<= 495) {
+      if (mouseY>=400 && mouseY<=500) {
+        if (inventory[6] == null) return;
+        currentWeapon = inventoryTrack[6];
+      }
+    }
+    if (mouseX>=510 && mouseX<= 610) {
+      if (mouseY>=400 && mouseY<=500) {
+        if (inventory[7] == null) return;
+        currentWeapon = inventoryTrack[7];
+      }
+    }
+    if (mouseX>=625 && mouseX<= 725) {
+      if (mouseY>=400 && mouseY<=500) {
+        if (inventory[8] == null) return;
+        currentWeapon = inventoryTrack[8];
+      }
+    }
+  }
+
+  image(inventory[1], 300, 265);
+  if (inventory[2] == null) return;
+  image(inventory[2], 400, 265);
+  if (inventory[3] == null) return;
+  image(inventory[3], 530, 265);
+  if (inventory[4] == null) return;
+  image(inventory[4], 650, 265);
+  if (inventory[5] == null) return;
+  image(inventory[5], 300, 415);
+  if (inventory[6] == null) return;
+  image(inventory[6], 400, 415);
+  if (inventory[7] == null) return;
+  image(inventory[7], 530, 415);
+  if (inventory[8] == null) return;
+  image(inventory[8], 650, 415);
 }
 
-void deathScreen() {
+void deathScreen() {  //Death screen, this shows when the player has reached 0% health
   background(0);
   fill(255);
   textSize(200);
   text("YOU DIED", 30, 300);
 }
 
-void winScreen() {
+void winScreen() { //Win screen, this shows when the player has beat the boss level(Level 20) in the gameScreen.
   background(0);
   fill(255);
   textSize(200);
   text("YOU WIN", 60, 300);
+}
+
+void helpScreen() {
+  background(255);
+  fill(0);
+  textSize(100);
+  text("Help", 400, 100);
+
+  textSize(30);
+  text("If you need help, please refer to the game website.", 10, 160);
+  text("It lists any and all information that you might need to know about", 10, 200);
+  text("this game, and how to play it. Have fun!", 10, 240);
+
+  fill(255);
+  rect(90, 370, 700, 40); //Link box
+  rect(20, 450, 200, 100); //Back box
+
+  fill(0);
+  textSize(80);
+  text("Back", 30, 530);
+
+  fill(0, 0, 255);
+  textSize(30);
+  text("http://projectcrystal.ddns.net/Inner-Demons/", 100, 400);
+
+  if (mousePressed) {
+    if (mouseX>=90 && mouseX<=790) {
+      if (mouseY>=370 && mouseY<=410) {
+        link("http://projectcrystal.ddns.net/Inner-Demons/");
+      }
+    }
+    if (mouseX>=20 && mouseX<=220) {
+      if (mouseY>=450 && mouseY<= 550) {
+        optionsScreen = true;
+        helpScreen = false;
+      }
+    }
+  }
 }
