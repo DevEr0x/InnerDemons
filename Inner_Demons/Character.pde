@@ -1,6 +1,9 @@
-void characterChecks() {
-  if (gender == "Male") {
-    switch(preset) {
+void characterChecks() 
+{
+  if (gender == "Male") 
+  {
+    switch(preset) 
+    {
     case 1:
       presetVar = "Male_preset1.png";
       break;
@@ -24,8 +27,10 @@ void characterChecks() {
       break;
     }
   }
-  if (gender == "Female") {
-    switch(preset) {
+  if (gender == "Female") 
+  {
+    switch(preset) 
+    {
     case 1:
       presetVar = "Female_preset1.png";
       break;
@@ -49,7 +54,8 @@ void characterChecks() {
       break;
     }
   }
-  if (gender != "Male" && gender != "Female") {
+  if (gender != "Male" && gender != "Female") 
+  {
     System.out.println("Uh oh, there's no proper gender selected!");
   }
 }

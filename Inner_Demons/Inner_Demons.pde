@@ -49,7 +49,6 @@ boolean creditsScreen = false;
 boolean pauseScreen = false;
 boolean deathScreen = false;
 boolean winScreen = false;
-boolean helpScreen = false;
 
 //Difficulty Variables
 int difficulty = 2;
@@ -85,20 +84,14 @@ This section below determines what items the player has in their inventory.
  If the player only has 3 items in his inventory, then only 3 items can be displayed.
  */
 PImage[] inventory = new PImage[10];
-int[] inventoryTrack = new int[10];
 int weaponCount = 1;
-
-//Weapon location variables
-float weaponX;
-float weaponY;
 
 //Chest
 int luck;
-int chestAppearLuck;
-boolean chestOpen = false;
 
-void setup() {
-  size(1000, 700, P3D); //Sets the size of the screen
+void setup() 
+{
+  size(1000, 700); //Sets the size of the screen
   smooth();
 
   //Image Defining
@@ -118,84 +111,149 @@ void setup() {
   keys = new boolean[128];
 }
 
-void draw() {
+void draw() 
+{
   checks(); //Runs all the screen checks constantly
-  weaponChecks(); //Constantly checks what weapon should be displayed
   characterChecks(); //Constantly checks what character should be displayed.
+  weaponChecks(); //Constantly checks what weapon should be displayed
   move();
 }
 
 //The checks in the checks function just run through, to see what screen the user is supposed to be on.
-void checks() {
-  if (menuScreen) {
+void checks() 
+{
+  if (menuScreen) 
+  {
     menuScreen();
   }
-  if (characterScreen) {
+  if (characterScreen) 
+  {
     characterScreen();
   }
-  if (quitScreen) {
+  if (quitScreen) 
+  {
     quitScreen();
   }
-  if (difficultyScreen) {
+  if (difficultyScreen) 
+  {
     difficultyScreen();
   }
-  if (gameScreen) {
+  if (gameScreen) 
+  {
     gameScreen();
   }
-  if (optionsScreen) {
+  if (optionsScreen) 
+  {
     optionsScreen();
   }
-  if (creditsScreen) {
+  if (creditsScreen) 
+  {
     creditsScreen();
   }
-  if (pauseScreen) {
+  if (pauseScreen) 
+  {
     pauseScreen();
   }
-  if (deathScreen) {
+  if (deathScreen) 
+  {
     deathScreen();
   }
-  if (winScreen) {
+  if (winScreen) 
+  {
     winScreen();
   }
-  if (helpScreen) {
-    helpScreen();
+}
+
+/*
+Work in progress...
+ Short description of the code below:
+ This is supposed to make the button creation process go by a lot quicker and use less code... 
+ currently, it doesn't work, but I have hopes for it to become very usefull. 
+ Any suggestions for it would be very helpful.
+ */
+void buttonClick(int x1, int x2, int y1, int y2, boolean activate, boolean disable) 
+{
+  if (mousePressed) 
+  {
+    if (mouseX>=x1 && mouseX<=x2) 
+    {
+      if (mouseY>=y1 && mouseY<=y2) 
+      { //Selects YES
+        activate = true;
+        disable = false;
+      }
+    }
   }
 }
 
 /*
 This area is used to control User movement
  */
-void move() {
+void move() 
+{
   int xDelta=0;
   int yDelta=0;
-  if (keys['w']) {
+  if (keys['w']) 
+  {
     //up = true;
     Bob.levelChange();
   }
-  if (keys['a']) {
+  if (keys['a']) 
+  {
     xDelta -=4;
   }
-  if (keys['d']) {
+  if (keys['d']) 
+  {
     xDelta+=4;
   }
-  if (keys['s']) {
+  if (keys['s']) 
+  {
     health --;
   }
+  if (keys['c']) 
+  {
+    chestOpen();
+  }
+  //if (up == true) { Unfinished jump feature
+  //  yDelta --;
+  //}
+  //if (y <= 550) {
+  //  up = false;
+  //  yDelta = 0;
+  //}
+
   Bob.updatePlayer(xDelta, yDelta);
+
 }
 
-void keyPressed() {
-  if (keyPressed && key == CODED) {
-    text("Use 'W A S D' to move - using the arrow keys can crash the game!", 0, 100);
+
+void mousePressed()
+{
+  if(mousePressed)
+  {
+    Bob.attackUpdate();
+  }
+  
+}
+
+
+
+
+
+void keyPressed() 
+{
+  if (keyPressed && key == CODED) 
+  {
     System.out.println("Hey, you can't use the arrow keys!");
     arrowCheck = true;
     return;
   }
   keys[key] = true;
 }
-void keyReleased() {
-  if (arrowCheck == true) {
-    text("Use 'W A S D' to move - using the arrow keys can crash the game!", 0, 100);
+void keyReleased() 
+{
+  if (arrowCheck == true) 
+  {
     System.out.println("Try using: W, A, S, D!");
     arrowCheck = false;
     return;

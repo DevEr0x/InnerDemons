@@ -20,11 +20,9 @@ void weaponChecks() {
     break;
   case 7:
     damageMod = 1.9;
-    weaponX = weaponX-20;
     break;
   case 8: 
     damageMod = 2;
-    weaponX = weaponX-20;
     break;
   case 9:
     damageMod = 1.5;   
@@ -48,7 +46,6 @@ void weaponChecks() {
   This will track the inventory
    */
   inventory[1] = loadImage("Dagger.png"); //This will never change
-  inventoryTrack[1] = 1; //This will never change
 }
 
 void chestOpen() {
@@ -63,7 +60,6 @@ void chestOpen() {
     if (weaponCount != 8) {
       weaponCount++;
       inventory[weaponCount] = weaponImage[rand];
-      inventoryTrack[weaponCount] = rand;
     }
     break;
   case 2:

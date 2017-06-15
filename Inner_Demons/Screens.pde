@@ -1,4 +1,5 @@
-void menuScreen() { //The screen for the main menu, this is where the game starts up, and the player chooses where to go from here.
+void menuScreen() 
+{ //The screen for the main menu, this is where the game starts up, and the player chooses where to go from here.
   background(255); 
 
   //Setting Up the Title
@@ -24,21 +25,28 @@ void menuScreen() { //The screen for the main menu, this is where the game start
   text("Options", (width/2)-140, 400+25); //Mid Button - Text(Options)
   text("Quit", (width/2)-85, 600+25); //Low Button - Text(Quit)
 
-  if (mousePressed) {
-    if (mouseX >= (width/2)-150 && mouseX<=(width/2)+150) {  //Goes to character selection screen
-      if (mouseY>= 200-50 && mouseY<= 200+50) {
+  if (mousePressed) 
+  {
+    if (mouseX >= (width/2)-150 && mouseX<=(width/2)+150) 
+    {  //Goes to character selection screen
+      if (mouseY>= 200-50 && mouseY<= 200+50)
+      {
         characterScreen = true;
         menuScreen = false;
       }
     }
-    if (mouseX >= (width/2)-150 && mouseX<=(width/2)+150) { //Goes to settings screen
-      if (mouseY>=400-50 && mouseY<=400+50) {
+    if (mouseX >= (width/2)-150 && mouseX<=(width/2)+150) 
+    { //Goes to settings screen
+      if (mouseY>=400-50 && mouseY<=400+50) 
+      {
         optionsScreen = true;
         menuScreen = false;
       }
     }
-    if (mouseX >= (width/2)-150 && mouseX<=(width/2)+150) {  //Goes to quit confirmation screen
-      if (mouseY >= 600-50 && mouseY<=600+50) {
+    if (mouseX >= (width/2)-150 && mouseX<=(width/2)+150) 
+    {  //Goes to quit confirmation screen
+      if (mouseY >= 600-50 && mouseY<=600+50) 
+      {
         quitScreen = true;
         menuScreen = false;
       }
@@ -46,7 +54,8 @@ void menuScreen() { //The screen for the main menu, this is where the game start
   }
 }
 
-void characterScreen() {  //The character selection screen, this is where the player will choose what their character looks like.
+void characterScreen() 
+{  //The character selection screen, this is where the player will choose what their character looks like.
   background(0);
 
   //Title
@@ -107,55 +116,76 @@ void characterScreen() {  //The character selection screen, this is where the pl
   textSize(50);
   text("Back", 80, 670);
 
-  if (mousePressed) {
-    if (mouseX >=660 && mouseX<= 760) { //Selecting BOY
-      if (mouseY >= 200 && mouseY<= 260) {
+  if (mousePressed) 
+  {
+    if (mouseX >=660 && mouseX<= 760) 
+    { //Selecting BOY
+      if (mouseY >= 200 && mouseY<= 260) 
+      {
         gender = "Male";
       }
     }
-    if (mouseX>=790 && mouseX<=890) { //Selecting GIRL
-      if (mouseY >= 200 && mouseY<= 260) {
+    if (mouseX>=790 && mouseX<=890) 
+    { //Selecting GIRL
+      if (mouseY >= 200 && mouseY<= 260) 
+      {
         gender = "Female";
       }
     }
-    if (mouseX>=680 && mouseX<=755) { //Selecting Preset 1
-      if (mouseY>=375 && mouseY<=425) {
+    if (mouseX>=680 && mouseX<=755) 
+    { //Selecting Preset 1
+      if (mouseY>=375 && mouseY<=425) 
+      {
         preset = 1;
       }
     }
-    if (mouseX>=800 && mouseX<=875) { //Selecting Preset 2
-      if (mouseY>=375 && mouseY<=425) {
+    if (mouseX>=800 && mouseX<=875) 
+    { //Selecting Preset 2
+      if (mouseY>=375 && mouseY<=425) 
+      {
         preset = 2;
       }
     }
-    if (mouseX>=680 && mouseX<=755) { //Selecting Preset 3
-      if (mouseY>=455 && mouseY<=505) {
+    if (mouseX>=680 && mouseX<=755) 
+    { //Selecting Preset 3
+      if (mouseY>=455 && mouseY<=505) 
+      {
         preset = 3;
       }
     }
-    if (mouseX>=800 && mouseX<=875) { //Selecting Preset 4
-      if (mouseY>=455 && mouseY<=505) {
+    if (mouseX>=800 && mouseX<=875) 
+    { //Selecting Preset 4
+      if (mouseY>=455 && mouseY<=505) 
+      {
         preset = 4;
       }
     }
-    if (mouseX>=680 && mouseX<=755) { //Selecting Preset 5
-      if (mouseY>=535 && mouseY<=585) {
+    if (mouseX>=680 && mouseX<=755) 
+    { //Selecting Preset 5
+      if (mouseY>=535 && mouseY<=585) 
+      {
         preset = 5;
       }
     }
-    if (mouseX>=800 && mouseX<=875) { //Selecting Preset 6
-      if (mouseY>=535 && mouseY<=585) {
+    if (mouseX>=800 && mouseX<=875) 
+    { //Selecting Preset 6
+      if (mouseY>=535 && mouseY<=585) 
+      {
         preset = 6;
       }
     }
-    if (mouseX>=40 && mouseX<=240) { //Back Button
-      if (mouseY>=615 && mouseY<=690) {
+    if (mouseX>=40 && mouseX<=240) 
+    { //Back Button
+      if (mouseY>=615 && mouseY<=690) 
+      {
         menuScreen = true;
         characterScreen = false;
       }
     }
-    if (mouseX>=690 && mouseX<=690+270) { //Continue Button
-      if (mouseY>=615 && mouseY<=690) {
+    if (mouseX>=690 && mouseX<=690+270) 
+    { //Continue Button
+      if (mouseY>=615 && mouseY<=690) 
+      {
         difficultyScreen = true;
         characterScreen = false;
       }
@@ -181,7 +211,8 @@ void characterScreen() {  //The character selection screen, this is where the pl
   image(displayWeapon, 315, 360);
 }
 
-void quitScreen() {     //This is the quit confirmation screen, it basically just asks if the player really wants to switch screens.
+void quitScreen() 
+{     //This is the quit confirmation screen, it basically just asks if the player really wants to switch screens.
   background(0);
 
   //Setting the title
@@ -202,14 +233,19 @@ void quitScreen() {     //This is the quit confirmation screen, it basically jus
   text("Yes", 150, 620); //Setting YES button text
   text("No", 760, 620); //Setting NO button text
 
-  if (mousePressed) {
-    if (mouseX>=100 && mouseX<=300) {
-      if (mouseY>=550 && mouseY<=650) { //Selects YES
+  if (mousePressed) 
+  {
+    if (mouseX>=100 && mouseX<=300) 
+    {
+      if (mouseY>=550 && mouseY<=650) 
+      { //Selects YES
         exit();
       }
     }
-    if (mouseX>=700 && mouseX<=900) {
-      if (mouseY>= 550 && mouseY<=650) { //Selects NO
+    if (mouseX>=700 && mouseX<=900) 
+    {
+      if (mouseY>= 550 && mouseY<=650) 
+      { //Selects NO
         menuScreen = true;
         quitScreen = false;
       }
@@ -217,7 +253,8 @@ void quitScreen() {     //This is the quit confirmation screen, it basically jus
   }
 }
 
-void difficultyScreen() {  //Difficulty selection screen, player chooses how hard they want the game to be.
+void difficultyScreen() 
+{  //Difficulty selection screen, player chooses how hard they want the game to be.
   background(0);
 
   //Setting up title
@@ -251,46 +288,59 @@ void difficultyScreen() {  //Difficulty selection screen, player chooses how har
   ellipse(600, 350, 25, 25); //Display Circle for NORMAL
   ellipse(950, 350, 25, 25); //Display Circle for HARD
 
-  if (difficulty == 1) { //Visual Display for EASY mode
+  if (difficulty == 1) 
+  { //Visual Display for EASY mode
     fill(0, 255, 0);
     stroke(255);
     ellipse(250, 350, 25, 25);
   }
-  if (difficulty == 2) { //Visual Display for NORMAL mode
+  if (difficulty == 2) 
+  {//Visual Display for NORMAL mode
     fill(0, 255, 0);
     stroke(255);
     ellipse(600, 350, 25, 25);
   }
-  if (difficulty == 3) { //Visual Display for HARD mode
+  if (difficulty == 3) 
+  { //Visual Display for HARD mode
     fill(0, 255, 0);
     stroke(255);
     ellipse(950, 350, 25, 25);
   }
 
   if (mousePressed) {
-    if (mouseX>=50 && mouseX<=250) {
-      if (mouseY>=350 && mouseY<=450) { //Sets the difficulty to 1 (EASY)
+    if (mouseX>=50 && mouseX<=250) 
+    {
+      if (mouseY>=350 && mouseY<=450) 
+      { //Sets the difficulty to 1 (EASY)
         difficulty = 1;
       }
     }
-    if (mouseX>=400 && mouseX<=600) {
-      if (mouseY>=350 && mouseY<=450) { //Sets the difficulty to 2 (NORMAL)
+    if (mouseX>=400 && mouseX<=600) 
+    {
+      if (mouseY>=350 && mouseY<=450) 
+      { //Sets the difficulty to 2 (NORMAL)
         difficulty = 2;
       }
     }
-    if (mouseX>=750 && mouseX<=950) {
-      if (mouseY>=350 && mouseY<= 450) { //Sets the difficulty to 3 (HARD)
+    if (mouseX>=750 && mouseX<=950) 
+    {
+      if (mouseY>=350 && mouseY<= 450) 
+      { //Sets the difficulty to 3 (HARD)
         difficulty = 3;
       }
     }
-    if (mouseX>=width/2-210 && mouseX<=width/2-10) {
-      if (mouseY>=500 && mouseY<= 600) { //Goes back to character selection screen
+    if (mouseX>=width/2-210 && mouseX<=width/2-10) 
+    {
+      if (mouseY>=500 && mouseY<= 600) 
+      { //Goes back to character selection screen
         characterScreen = true;
         difficultyScreen = false;
       }
     }
-    if (mouseX>=width/2+10 && mouseX<=width/2+210) {
-      if (mouseY>=500 && mouseY<= 600) { //Goes to the game screen
+    if (mouseX>=width/2+10 && mouseX<=width/2+210) 
+    {
+      if (mouseY>=500 && mouseY<= 600) 
+      { //Goes to the game screen
         gameScreen = true;
         difficultyScreen = false;
       }
@@ -298,18 +348,24 @@ void difficultyScreen() {  //Difficulty selection screen, player chooses how har
   }
 }
 
-void gameScreen() { //The start of the game screen - This is where all the action will take place.
-  if (level >= 0 && level < 5) {
+void gameScreen() 
+{ //The start of the game screen - This is where all the action will take place.
+  if (level >= 0 && level < 5) 
+  {
     background(startBackground); //This will be replaced with dialouge, but for now it's just this
     monsterCall();
   }
-  if (level >= 5 && level<10) {
+  if (level >= 5 && level<10) 
+
+  {
     background(background2);
   }
-  if (level >=10 && level < 15) {
+  if (level >=10 && level < 15) 
+  {
     background(background3);
   }
-  if (level >=15 && level < 20) {
+  if (level >=15 && level < 20) 
+  {
     background(background4);
   }
   if (level==20) {
@@ -319,12 +375,13 @@ void gameScreen() { //The start of the game screen - This is where all the actio
     winScreen = true;
     gameScreen = false;
   }
-  if (chestAppearLuck == 2) {
-    randomChest.chestDisplay();
-  }
+  randomChest.chestDisplay();
   Bob.setupSprites();
   Bob.drawPlayer();
   screenDisplay();
+  for (int i = 1; i <= weaponCount; i++) {
+    image(inventory[i], i*50, 100);
+  }
 }
 
 void optionsScreen() { //This is where the player can choose between: Settings - Help - Credits
@@ -356,8 +413,6 @@ void optionsScreen() { //This is where the player can choose between: Settings -
   if (mousePressed) {
     if (mouseX>=750 && mouseX<=950) { //Selects HELP button
       if (mouseY>=200 && mouseY<=300) {
-        helpScreen = true;
-        optionsScreen = false;
       }
     }
     if (mouseX>=750 && mouseX<=950) { //Selects SETTINGS button
@@ -422,136 +477,18 @@ void pauseScreen() {  //Pause screen- this is where the player will be able to a
   fill(0);
   textSize(40);
   text("Inventory", 400, 150);
-
-  rectMode(0);
-  fill(255, 80);
-  stroke(0);
-  //Row 1
-  rect(280, 250, 100, 100);
-  rect(395, 250, 100, 100);
-  rect(510, 250, 100, 100);
-  rect(625, 250, 100, 100);
-  //Row 2
-  rect(280, 400, 100, 100);
-  rect(395, 400, 100, 100);
-  rect(510, 400, 100, 100);
-  rect(625, 400, 100, 100);
-
-  if (mousePressed) {
-    if (mouseX>=280 && mouseX<= 380) {
-      if (mouseY>=250 && mouseY<=350) {
-        currentWeapon = inventoryTrack[1];
-      }
-    }
-    if (mouseX>=395 && mouseX<= 495) {
-      if (mouseY>=250 && mouseY<=350) {
-        if (inventory[2] == null) return;
-        currentWeapon = inventoryTrack[2];
-      }
-    }
-    if (mouseX>=510 && mouseX<= 610) {
-      if (mouseY>=250 && mouseY<=350) {
-        if (inventory[3] == null) return;
-        currentWeapon = inventoryTrack[3];
-      }
-    }
-    if (mouseX>=625 && mouseX<= 725) {
-      if (mouseY>=250 && mouseY<=350) {
-        if (inventory[4] == null) return;
-        currentWeapon = inventoryTrack[4];
-      }
-    }
-    if (mouseX>=280 && mouseX<= 380) {
-      if (mouseY>=400 && mouseY<=500) {
-        if (inventory[5] == null) return;
-        currentWeapon = inventoryTrack[5];
-      }
-    }
-    if (mouseX>=395 && mouseX<= 495) {
-      if (mouseY>=400 && mouseY<=500) {
-        if (inventory[6] == null) return;
-        currentWeapon = inventoryTrack[6];
-      }
-    }
-    if (mouseX>=510 && mouseX<= 610) {
-      if (mouseY>=400 && mouseY<=500) {
-        if (inventory[7] == null) return;
-        currentWeapon = inventoryTrack[7];
-      }
-    }
-    if (mouseX>=625 && mouseX<= 725) {
-      if (mouseY>=400 && mouseY<=500) {
-        if (inventory[8] == null) return;
-        currentWeapon = inventoryTrack[8];
-      }
-    }
-  }
-
-  image(inventory[1], 300, 265);
-  if (inventory[2] == null) return;
-  image(inventory[2], 400, 265);
-  if (inventory[3] == null) return;
-  image(inventory[3], 530, 265);
-  if (inventory[4] == null) return;
-  image(inventory[4], 650, 265);
-  if (inventory[5] == null) return;
-  image(inventory[5], 300, 415);
-  if (inventory[6] == null) return;
-  image(inventory[6], 400, 415);
-  if (inventory[7] == null) return;
-  image(inventory[7], 530, 415);
-  if (inventory[8] == null) return;
-  image(inventory[8], 650, 415);
 }
 
-void deathScreen() {  //Death screen, this shows when the player has reached 0% health
+void deathScreen() {
   background(0);
   fill(255);
   textSize(200);
   text("YOU DIED", 30, 300);
 }
 
-void winScreen() { //Win screen, this shows when the player has beat the boss level(Level 20) in the gameScreen.
+void winScreen() {
   background(0);
   fill(255);
   textSize(200);
   text("YOU WIN", 60, 300);
-}
-
-void helpScreen() {
-  background(255);
-  fill(0);
-  textSize(100);
-  text("Help", 400, 100);
-
-  textSize(30);
-  text("If you need help, please refer to the game website.", 10, 160);
-  text("It lists any and all information that you might need to know about", 10, 200);
-  text("this game, and how to play it. Have fun!", 10, 240);
-
-  fill(255);
-  rect(90, 370, 700, 40); //Link box
-  rect(20, 450, 200, 100); //Back box
-
-  fill(0);
-  textSize(80);
-  text("Back", 30, 530);
-
-  fill(0, 0, 255);
-  textSize(30);
-  text("http://projectcrystal.ddns.net/Inner-Demons/", 100, 400);
-
-  if (mousePressed) {
-    if (mouseX>=90 && mouseX<=790) {
-      if (mouseY>=370 && mouseY<=410) {
-        link("http://projectcrystal.ddns.net/Inner-Demons/");
-      }
-    }
-    if (mouseX>=20 && mouseX<=220) {
-      if (mouseY>=450 && mouseY<= 550) {
-        optionsScreen = true;
-        helpScreen = false;
-      }
-    }
-  }
 }

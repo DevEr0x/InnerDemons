@@ -2,17 +2,22 @@ class Player
 {
   float x, y;
   PImage [][] movement;
+  PImage [][] attack;
   boolean inMotion; //Lets you know if character is moving or not
+  boolean attacking; //Lets program know if player is attacking or not
   int currentDirection;
   float currentFrame;
+  float currentFrame2;
 
   final int UP = 0, LEFT = 1, DOWN = 2, RIGHT =3;
 
   Player()
   {
     inMotion = false;
+    attacking = false;
     currentDirection=3;
     currentFrame=3;
+    currentFrame2=3;
     x = 100;
     y = 625;
 
@@ -30,12 +35,16 @@ class Player
       movement[1][i] = spriteSheet.get(16 + 64 * i, 578, 40, 65); //Left moving sprite
       movement[2][i] = spriteSheet.get(16 + 64 * i, 642, 32, 65); //Downward moving sprite
       movement[3][i] = spriteSheet.get(10 + 64 * i, 706, 40, 65); //Right moving sprite
+      movement[4][i] = spriteSheet.get(10 + 64 * i, 384, 40, 65); //Left attacking animation
+      movement[5][i] = spriteSheet.get(10 + 65 * i, 512, 40, 65); //Right attacking animation
     }
   }
+  
 
-  void levelChange() {
-    chestOpen = false;
-    chestAppearLuck = (int) random(1, 3);
+
+
+  void levelChange() 
+  {
     fill(255, 90);
     text("Level Up!", 70, 70);
     level++;
@@ -44,31 +53,38 @@ class Player
     y = 625;
   }
 
-  void drawPlayer() {
-    weaponX = x;
-    weaponY = y+40;
-    if (inMotion) {
+
+  
+  
+  
+  void drawPlayer()
+  {
+    if (inMotion)
+    {
       image(movement[currentDirection][1 + int(currentFrame)], x, y); //Cycles through the frames with the help of line 46
-      if (currentDirection ==3) {
-        image(weaponImage[currentWeapon], weaponX+10, weaponY);
-      } else {
-        pushMatrix();
-        scale(-1, 1);
-        image(weaponImage[currentWeapon], -weaponX-20, weaponY);
-        popMatrix();
-      }
-    } else { 
-      image(movement[currentDirection][0], x, y);
-      if (currentDirection ==3) {
-        image(weaponImage[currentWeapon], weaponX+10, weaponY);
-      } else {
-        pushMatrix();
-        scale(-1, 1);
-        image(weaponImage[currentWeapon], -weaponX-20, weaponY);
-        popMatrix();
-      }
+     
     }
+    else if(attacking)
+    {
+      image(movement[5][1 + int(currentFrame2)],x , y);
+    }
+    
+     else
+    {
+      image(movement[currentDirection][0], x, y);
+    } 
+}
+  
+  void attackUpdate()
+  {
+    currentFrame2 = (currentFrame2 + 0.6) % 8;
+    attacking = true;
+    
   }
+  
+  
+  
+  
   void updatePlayer(int xDelta, int yDelta)
   {
     currentFrame = (currentFrame + 0.6 /*Changing the 0.2 changes animation speed*/) % 8; //helps change through the frames
@@ -93,6 +109,17 @@ class Player
     {
       x = x - xDelta;
       y = y - yDelta;
+    }
+    if (currentDirection==3) 
+    {
+      image(weaponImage[currentWeapon], x+10, y+40);
+    }
+    if (currentDirection==1) 
+    {
+      pushMatrix();
+      scale(-1, 1);
+      image(weaponImage[currentWeapon], x+30, y+40);
+      popMatrix();
     }
   }
   boolean isPlayerOffScreen(float x, float y)
