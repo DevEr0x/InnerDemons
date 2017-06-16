@@ -70,6 +70,7 @@ Player Bob;
 boolean arrowCheck = false;
 boolean up = false;
 boolean down = false;
+boolean walking = false;
 
 int health = 100;
 
@@ -103,18 +104,14 @@ void setup() {
 
   //Image Defining
   startBackground = loadImage("Starting Background.png");
-  startBackground.resize(1000, 700);
   background2 = loadImage("background2.png");
-  background2.resize(1000, 700);
   background3 = loadImage("background3.png");
-  background3.resize(1000, 700);
   background4 = loadImage("background4.png");
-  background4.resize(1000, 700);
   bossBackground= loadImage("boss_background.png");
-  bossBackground.resize(1000, 700);
 
   //Player Defining
   Bob = new Player();
+  //Key pressing
   keys = new boolean[128];
 }
 
@@ -165,11 +162,12 @@ void checks() {
 /*
 This area is used to control User movement
  */
+
 void move() {
   int xDelta=0;
   int yDelta=0;
+
   if (keys['w']) {
-    //up = true;
     Bob.levelChange();
   }
   if (keys['a']) {

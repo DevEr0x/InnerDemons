@@ -30,7 +30,7 @@ void weaponChecks() {
     damageMod = 1.5;   
     break;
   default:
-    System.out.println("There is currently no weapon selected.");
+    System.out.println("Error: There is currently no weapon selected.");
     break;
   }
   weaponImage[1] = loadImage("Dagger.png"); //Dagger 1

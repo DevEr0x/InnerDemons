@@ -161,6 +161,28 @@ void characterScreen() {  //The character selection screen, this is where the pl
       }
     }
   }
+  String name = "";
+  if (preset == 1) {
+    name = "Freddie";
+  }
+  if (preset == 2) {
+    name = "Michael";
+  }
+  if (preset == 3) {
+    name = "Eric";
+  }
+  if (preset == 4) {
+    name = "Ben";
+  }
+  if (preset == 5) {
+    name = "Shayne";
+  }
+  if (preset == 6) {
+    name = "The nameless one";
+  }
+  if (gender == "Female") {
+    name = name+"a";
+  } 
 
   //Preview Screen
   rectMode(LEFT); //Changes how the rect is displayed
@@ -173,12 +195,11 @@ void characterScreen() {  //The character selection screen, this is where the pl
   PImage display =spriteSheet.get(10 + 0, 706, 40, 65);
   display.resize(200, 400);
   text("Preview", 270, 130);
-  text("Gender: " +gender, 25, 550);
-  text("Preset: " +preset, 25, 590);
+  text("Character: " +name, 25, 590);
   image(display, 230, 100);
-  PImage displayWeapon = weaponImage[3];
-  displayWeapon.resize(200, 50);
-  image(displayWeapon, 315, 360);
+  PImage displayWeapon = weaponImage[8];
+  displayWeapon.resize(200, 75);
+  image(displayWeapon, 280, 345);
 }
 
 void quitScreen() {     //This is the quit confirmation screen, it basically just asks if the player really wants to switch screens.
@@ -300,19 +321,24 @@ void difficultyScreen() {  //Difficulty selection screen, player chooses how har
 
 void gameScreen() { //The start of the game screen - This is where all the action will take place.
   if (level >= 0 && level < 5) {
+    startBackground.resize(width, height);
     background(startBackground); //This will be replaced with dialouge, but for now it's just this
     monsterCall();
   }
   if (level >= 5 && level<10) {
+    background2.resize(width, height);
     background(background2);
   }
   if (level >=10 && level < 15) {
+    background3.resize(width, height);
     background(background3);
   }
   if (level >=15 && level < 20) {
+    background4.resize(width, height);
     background(background4);
   }
   if (level==20) {
+    bossBackground.resize(width, height);
     background(bossBackground);
   }
   if (level >= 21) {
