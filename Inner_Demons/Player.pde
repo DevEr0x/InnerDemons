@@ -17,7 +17,7 @@ class Player
     attacking = false;
     currentDirection=3;
     currentFrame=3;
-    currentFrame2=3;
+    currentFrame2=1;
     x = 100;
     y = 625;
 
@@ -31,12 +31,12 @@ class Player
     spriteSheet = loadImage(presetVar); //Load entire spritesheet
     for (int i = 0; i < 9; i++)
     {
-      movement[0][i] = spriteSheet.get(21 + 64 * i, 514, 32, 65); //Upward moving sprite
-      movement[1][i] = spriteSheet.get(16 + 64 * i, 578, 40, 65); //Left moving sprite
-      movement[2][i] = spriteSheet.get(16 + 64 * i, 642, 32, 65); //Downward moving sprite
+      movement[0][i] = spriteSheet.get(10 + 64 * i, 514, 40, 65); //Upward moving sprite
+      movement[1][i] = spriteSheet.get(10 + 64 * i, 578, 45, 65); //Left moving sprite
+      movement[2][i] = spriteSheet.get(10 + 64 * i, 642, 40, 65); //Downward moving sprite
       movement[3][i] = spriteSheet.get(10 + 64 * i, 706, 40, 65); //Right moving sprite
       movement[4][i] = spriteSheet.get(10 + 64 * i, 384, 40, 65); //Left attacking animation
-      movement[5][i] = spriteSheet.get(10 + 65 * i, 512, 40, 65); //Right attacking animation
+      movement[5][i] = spriteSheet.get(10 + 64 * i, 448, 40, 65); //Right attacking animation
     }
   }
   
@@ -64,15 +64,22 @@ class Player
       image(movement[currentDirection][1 + int(currentFrame)], x, y); //Cycles through the frames with the help of line 46
      
     }
-    else if(attacking)
-    {
-      image(movement[5][1 + int(currentFrame2)],x , y);
-    }
-    
      else
     {
       image(movement[currentDirection][0], x, y);
     } 
+   
+   
+    
+     if(attacking)
+    {
+      image(movement[5][1 + int(currentFrame2)],x , y);
+    }
+     else
+    {
+      image(movement[5][0], x, y);
+    } 
+    
 }
   
   void attackUpdate()

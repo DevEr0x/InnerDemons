@@ -208,7 +208,7 @@ void move()
   }
   if (keys['s']) 
   {
-    health --;
+    health=health-100;
   }
   if (keys['c']) 
   {
@@ -223,17 +223,15 @@ void move()
   //}
 
   Bob.updatePlayer(xDelta, yDelta);
-
 }
 
 
 void mousePressed()
 {
-  if(mousePressed)
+  if (mousePressed)
   {
     Bob.attackUpdate();
   }
-  
 }
 
 
