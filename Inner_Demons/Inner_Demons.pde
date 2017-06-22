@@ -98,6 +98,11 @@ int luck;
 int chestAppearLuck;
 boolean chestOpen = false;
 
+//Monster
+int monsterCount;
+ArrayList <Monsters>enemies;
+boolean monstersDead = true;
+
 void setup() {
   size(1000, 700, P3D); //Sets the size of the screen
   smooth();
@@ -113,6 +118,8 @@ void setup() {
   Bob = new Player();
   //Key pressing
   keys = new boolean[128];
+  //Monsters
+  enemies = new ArrayList<Monsters>();
 }
 
 void draw() {
@@ -120,6 +127,9 @@ void draw() {
   weaponChecks(); //Constantly checks what weapon should be displayed
   characterChecks(); //Constantly checks what character should be displayed.
   move();
+  if (enemies.size() == 0) {
+    monsterCount = 0;
+  }
 }
 
 //The checks in the checks function just run through, to see what screen the user is supposed to be on.
@@ -199,4 +209,11 @@ void keyReleased() {
     return;
   }
   keys[key] = false;
+}
+
+void mousePressed() {
+  if (enemies.size() >= 1) {
+    enemies.remove(0);
+  }
+  println(enemies.size());
 }

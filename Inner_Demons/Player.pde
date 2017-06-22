@@ -42,6 +42,7 @@ class Player
     currentDirection = 3;
     x = 100;
     y = 625;
+    monstersDead=true;
   }
 
   void drawPlayer() {
